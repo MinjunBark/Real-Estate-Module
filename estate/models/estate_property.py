@@ -4,9 +4,8 @@ class EstateProperty(models.Model):
    _name = 'estate.property'
    _description = 'Estate Property'
    
-   
    name = fields.Char('Name', required=True, translate=True)
-   description  = fields.Text('Description', required=True)
+   description = fields.Text('Description', required=True)
    postcode = fields.Char('Postcode', required=True)
    date_availability = fields.Date('Date Availability', required=True)
    expected_price = fields.Float('Expected Price', required=True)
@@ -22,3 +21,4 @@ class EstateProperty(models.Model):
        selection = [('north', 'North'), ('south', 'South'), ('east', 'East'), ('west', 'West')],
        help = "The direction of the garden"
    )
+   
