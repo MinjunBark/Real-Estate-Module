@@ -29,10 +29,12 @@
         <field name="arch" type="xml">
             <form string="Estate Property">
                 <sheet>
+                    <<h1><field name="name"/></h1>
                     <group>
-                        <h1 name="name"/>
-                            <field name="expected_price"/>
-                            <field name="selling_price"/>
+                        <field name="postcode"/>
+                        <field name="date_availability"/>
+                        <field name="expected_price"/>
+                        <field name="selling_price"/>
                     </group>
                     <group>
                         <field name="bedrooms"/>
