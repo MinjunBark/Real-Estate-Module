@@ -6,37 +6,37 @@ class EstateProperty(models.Model):
    _description = 'Estate Property'
    
    name = fields.Char(
-       'Name',
+       string='Name',
        required=True,
        help="The name of the property"
     )
    description = fields.Text(
-       'Description',
+       string='Description',
        help="The description of the property"
     )
    postcode = fields.Char(
-       'Postcode',
+       string='Postcode',
        help="The postcode of the property"
     )
    date_availability = fields.Date(
-       'Date Availability', 
+       string='Date Availability', 
        copy=False,
        default=lambda self: datetime.today() + timedelta(days=90), 
        help="The date availability of the property"
     )
    expected_price = fields.Float(
-       'Expected Price',
+       string='Expected Price',
        required=True,
        help="The expected price of the property"
     )
    selling_price = fields.Float(
-       'Selling Price', 
+       string='Selling Price', 
        copy=False,
        readonly=True, 
        help="The selling price of the property"
     )
    bedrooms = fields.Integer(
-       'Bedrooms',
+       string='Bedrooms',
        default=2,
        help="The number of bedrooms of the property"
     )
@@ -59,23 +59,23 @@ class EstateProperty(models.Model):
        help="The state of the property"
     )
    living_area = fields.Integer(
-       'Living Area',
+       string='Living Area',
        help="The living area of the property"
     )
    facades = fields.Integer(
-       'Facades',
+       string='Facades',
        help="The number of facades of the property"
     )
    garage = fields.Boolean(
-       'Garage',
+       string='Garage',
        help="Whether the property has a garage or not"
     )
    garden = fields.Boolean(
-       'Garden',
+       string='Garden',
        help="Whether the property has a garden or not"
     )
    garden_area = fields.Integer(
-       'Garden Area',
+       string='Garden Area',
        help="The garden area of the property"
     )
    garden_orientation = fields.Selection(
