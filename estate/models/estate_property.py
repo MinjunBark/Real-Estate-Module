@@ -1,4 +1,5 @@
 from odoo import fields, models 
+from datetime import datetime, timedelta
 
 class EstateProperty(models.Model):
    _name = 'estate.property'
