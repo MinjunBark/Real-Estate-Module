@@ -34,7 +34,7 @@
                             <field name="name"/>
                         </group>
                         <group>
-                            <field name="last_seen"/>
+                            <field name="expected_price"/>
                         </group>
                     </group>
                     <notebook>
