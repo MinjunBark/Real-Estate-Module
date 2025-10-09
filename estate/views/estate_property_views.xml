@@ -31,11 +31,16 @@
                 <sheet>
                     <h1> <field name="name"/> </h1>
                     <group>
-                        <field name="postcode"/>
-                        <field name="date_availability"/>
-                        <field name="expected_price"/>
-                        <field name="selling_price"/>
+                        <group col="2">
+                            <field name="postcode"/>
+                            <field name="date_availability"/>
+                        </group>
+                        <group col="2">
+                            <field name="expected_price"/>
+                            <field name="selling_price"/>
+                        </group>
                     </group>
+
                 </sheet>
             </form>
         </field>
