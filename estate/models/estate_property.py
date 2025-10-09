@@ -6,7 +6,7 @@ class EstateProperty(models.Model):
    _description = 'Estate Property'
    
    name = fields.Char(
-       string='Name',
+       string='Title',
        required=True,
        help="The name of the property"
     )
@@ -59,7 +59,7 @@ class EstateProperty(models.Model):
        help="The state of the property"
     )
    living_area = fields.Integer(
-       string='Living Area',
+       string='Living Area (sqm)',
        help="The living area of the property"
     )
    facades = fields.Integer(
