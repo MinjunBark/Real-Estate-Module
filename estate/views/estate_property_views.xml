@@ -6,7 +6,11 @@
         <field name="view_mode">list,form</field> 
         <field name="arch", type="xml"> 
             <list string="Estate Properties">
-                <filed name="name"/>
+                <field name="name"/>
+                <field name="expected_price"/>
+                <field name="bedrooms"/>
+                <field name="date_availability"/>
+                <field name="state"/>
             </list>
         </field>
     </record>
