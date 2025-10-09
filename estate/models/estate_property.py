@@ -84,3 +84,8 @@ class EstateProperty(models.Model):
        help = "The direction of the garden"
    )
    
+   property_type_id = fields.Many2one(
+       'estate.property.type',
+       string='Property Type',
+       help="The property type of the property"
+   )
