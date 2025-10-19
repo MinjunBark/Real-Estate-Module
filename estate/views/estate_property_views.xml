@@ -40,6 +40,7 @@
                         </group>
                         <group col="2">
                             <field name="expected_price"/>
+                            <field name="best_price"/>
                             <field name="selling_price"/>
                         </group>
                     </group>
@@ -54,6 +55,7 @@
                                     <field name="garage"/>
                                     <field name="garden"/>
                                     <field name="garden_area"/>
+                                    <field name="total_area"/>
                                     <field name="garden_orientation"/>
                                     <field name="active"/>
                                     <field name="state"/>
@@ -69,6 +71,8 @@
                                 <field name="offer_ids">
                                     <list>
                                         <field name='price'/>
+                                        <field name='validity'/>
+                                        <field name='date_deadline'/>
                                         <field name='partner_id'/>
                                         <field name='status'/>
                                     </list>
@@ -76,6 +80,8 @@
                                         <group>
                                             <field name='price'/>
                                             <field name='partner_id'/>
+                                            <field name='validity'/>
+                                            <field name='date_deadline'/>
                                             <field name='status'/>
                                         </group>
                                     </form>
