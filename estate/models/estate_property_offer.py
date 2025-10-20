@@ -2,12 +2,14 @@ from odoo import api,fields, models
 from datetime import datetime, timedelta
 from odoo.exceptions import UserError
 
-class EstatePropertyType(models.Model):
+class EstatePropertyOffer(models.Model):
     _name = 'estate.property.offer'
     _description = 'Estate Property Offer'
+    _order = 'price desc'
     
     price = fields.Float(
         string='Price',
+        required = True
     )
     status = fields.Selection(
         string="Status",
@@ -26,14 +28,14 @@ class EstatePropertyType(models.Model):
     )
     # ----CHAPTER 9----
     validity = fields.Integer(
-        string='Validity',
+        string='Validity (days)',
         default=7
     )
     date_deadline = fields.Date(
         string='Deadline',
         compute='_compute_date_deadline',
         inverse='_inverse_date_deadline',
-        store=False
+        store=True
     )
             
     @api.depends('create_date', 'validity')
@@ -71,3 +73,16 @@ class EstatePropertyType(models.Model):
     _sql_constraints = [
         ('check_price', 'CHECK(price > 0)', 'The price must be strictly positive.')
     ]
+    
+    @api.model
+    def create(self, vals_list):
+        # Handle both single dict and list of dicts
+        if isinstance(vals_list, dict):
+            vals_list = [vals_list]  # Convert single dict to list for uniform processing
+        for vals in vals_list:
+            property_id = vals.get('property_id')
+            if property_id:
+                property_record = self.env['estate.property'].browse(property_id)
+                if property_record.state == 'new':
+                    property_record.state = 'offer_received'
+        return super(EstatePropertyOffer, self).create(vals_list)

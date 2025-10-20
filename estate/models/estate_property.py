@@ -6,6 +6,7 @@ from odoo.tools.float_utils import float_compare, float_is_zero
 class EstateProperty(models.Model):
    _name = 'estate.property'
    _description = 'Estate Property'
+   _order='id desc'
    
    name = fields.Char(
        string='Title',
@@ -52,6 +53,7 @@ class EstateProperty(models.Model):
        selection=[
            ('new', 'New'),
            ('offer_received', 'Offer Received'),
+           ('offer_accepted', 'Offer Accepted'),
            ('sold', 'Sold'),
            ('cancelled', 'Cancelled')
         ],
@@ -103,7 +105,7 @@ class EstateProperty(models.Model):
         default=lambda self: self.env.user,
         help="The salesperson of the property"
     )
-   tags_ids = fields.Many2many(
+   tag_ids = fields.Many2many(
        string='Tags',
        comodel_name='estate.property.tag',
        help="The tags of the property"
@@ -121,7 +123,7 @@ class EstateProperty(models.Model):
        compute = '_compute_total_area',
        store = False
    )
-   best_price = fields.Integer(
+   best_price = fields.Float(
        string = 'Best Price',
        compute = '_compute_best_price',
        store = False
@@ -160,9 +162,10 @@ class EstateProperty(models.Model):
            record.state = 'sold'
        return True
     
-   _sql_contraints = [
+    
+   _sql_constraints = [
        ('check_expected_price', 'CHECK(expected_price > 0)', 'The expected price must be strictly positive!'),
-       ('check_selling_price', 'CHECK(selling_price > 0)', 'The selling price must be strictly positive!')
+       ('check_selling_price', 'CHECK(selling_price >= 0)', 'The selling price must be strictly positive!')
    ]
     
    @api.constrains('selling_price', 'expected_price')
